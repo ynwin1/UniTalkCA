@@ -1,0 +1,10 @@
+# Shared
+/.idea
+
+# App
+/app/node_modules
+
+# Server
+/server/.idea
+/server/node_modules
+
