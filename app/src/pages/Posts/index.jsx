@@ -1,28 +1,40 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import Post from '../../components/Post';
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
-import { useParams, Link} from 'react-router-dom'
+import {Breadcrumb, InputGroup, Form} from "react-bootstrap";
+import { useParams } from 'react-router-dom';
+import "./index.css";
+import Header from "../../components/Header";
 
 // TODO: Repeated with Header. pull it to the shared components
-const HomeDescription = styled.div`
+const Frame = styled.div`
   width: 90%;
 	margin:auto;
 	padding: 20px 20px;
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
   vertical-align: sup;
-  line-height: 1.5;
-	text-align: center;
-	background-color:${colors.backgroundLight};
 `
+
+const ComposeButton = styled.button`
+	background-color: ${colors.primary};
+	color: white;
+	text-decoration: none;
+	border: 1px solid  ${colors.primary};
+	border-radius:10px;
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  padding: 5px 20px;
+  z-index: 10;
+	`
 
 function Posts() {
 
-    const {univ, category} = useParams();
+    const { university, category } = useParams();
     const [posts, setPosts] = useState([
-        {title: "Hello World", author: "John Doe", body: "This is my first post!", votes: 5, date: "2022-01-01"},
+        {title: "Hello Worldsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", author: "John Doe sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", body: "This is my first postsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss!", votes: 5, date: "2022-01-01"},
         {title: "Second Post", author: "Jane Smith", body: "This is my second post!", votes: 3, date: "2022-01-02"},
         {title: "Third Post", author: "Bob Johnson", body: "This is my third post!", votes: 8, date: "2022-01-03"},
     ]);
@@ -31,11 +43,28 @@ function Posts() {
 
     return (
       <div>
-        <HomeDescription>
+        <Header breadcrumbItems={[university, category]}/>
+        <Frame>
+          <div className="search-box">
+            <InputGroup className="mb-3" style={{width: "50%"}}>
+              <InputGroup.Text id="inputGroup-sizing-lg">
+                Search
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                // Placeholder="what post are you looking for"
+              />
+            </InputGroup>
+          </div>
+          <ComposeButton onClick={() => {
+
+          }}> <h1>+</h1> </ComposeButton>
+
           {sortedPosts.map((post, index) =>
             <Post key={index} title={post.title} author={post.author} body={post.body} votes={post.votes} date={post.date}/>
           )}
-        </HomeDescription>
+        </Frame>
 
       </div>
     );

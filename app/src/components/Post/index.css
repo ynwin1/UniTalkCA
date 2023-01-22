@@ -9,4 +9,6 @@
 .voting-panel {
     display: inline-flex;
     align-items: center;
+    width: 100%;
+    justify-content: end;
 }
