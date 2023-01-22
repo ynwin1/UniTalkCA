@@ -1,19 +1,15 @@
 import React, {useRef, useState} from "react";
 import Header from '../../components/Header'
-function Home()
+import Main from '../../components/Main'
+import Breadcrumb from "react-bootstrap/Breadcrumb";
 
-{
-   
-
-return(
-<div>
-    <Header/>
-<h1> Hello </h1>
-
-
-</div>
-
-)
+function Home() {
+  return(
+    <div>
+      <Header/>
+      <Main/>
+    </div>
+  );
 
 }
 

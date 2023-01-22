@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom'
+
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
+import React, {useState} from 'react'
+import waterloo from  '../../assets/waterloo.png'
+import ubc from  '../../assets/ubc.png'
+import tru from  '../../assets/tru.png'
+import {Breadcrumb} from "react-bootstrap";
+import Post from "../Post";
 
-
-function Header() {
-   
-	const HomeHeader = styled.header`
+const HomeHeader = styled.header`
 		width: 95%;
 		margin: auto;
 		margin-top: 25px;
@@ -20,26 +23,45 @@ function Header() {
 		height: 50px;
 	`
 	const HeaderNav = styled.nav`
-		width: 20%;
+		width: 10%;
 		height: 30px;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 	`
-	const SelectedLink = styled(Link)`
+	const SelectedLink = styled.a`
 		background-color: ${colors.primary};
 		color: white;
 		text-decoration: none;
 		border: 1px solid  ${colors.primary};
 		border-radius:25px;
 	`
-	const HeaderLink = styled(Link)`
-		text-decoration: none;
-		color: ${colors.secondary};
+	const HeaderLink = styled.a`
+	background-color: ${colors.primary};
+	color: white;
+	text-decoration: none;
+	border: 1px solid  ${colors.primary};
+	border-radius:25px;
 	`
 
+function Header({breadcrumbItems}) {
+
 	return (
-		<h1> Our Header</h1>
+		<div>
+		<HomeHeader >
+      <Breadcrumb>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+        {breadcrumbItems?.map((item) =>
+          <Breadcrumb.Item active>{item}</Breadcrumb.Item>
+        )}
+      </Breadcrumb>
+			<HeaderLogo src= {ubc} alt="logo" />
+			<HeaderNav>
+				<HeaderLink > &nbsp;&nbsp;Login &nbsp;&nbsp;</HeaderLink>
+				<HeaderLink > &nbsp;&nbsp;SignIn &nbsp;&nbsp;</HeaderLink>
+			</HeaderNav>
+		</HomeHeader>
+	</div>
 	)
 }
 

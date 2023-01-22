@@ -1,0 +1,14 @@
+.post-title {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.voting-panel {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    justify-content: end;
+}
