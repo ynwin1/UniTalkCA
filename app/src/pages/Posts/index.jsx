@@ -1,7 +1,8 @@
-import React, { useState, useParams } from 'react';
+import React, { useState} from 'react';
 import Post from '../../components/Post';
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
+import { useParams, Link} from 'react-router-dom'
 
 // TODO: Repeated with Header. pull it to the shared components
 const HomeDescription = styled.div`
@@ -19,8 +20,7 @@ const HomeDescription = styled.div`
 
 function Posts() {
 
-    const { university } = useParams();
-    const { category } = useParams();
+    const {univ, category} = useParams();
     const [posts, setPosts] = useState([
         {title: "Hello World", author: "John Doe", body: "This is my first post!", votes: 5, date: "2022-01-01"},
         {title: "Second Post", author: "Jane Smith", body: "This is my second post!", votes: 3, date: "2022-01-02"},

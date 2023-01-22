@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Home from './pages/Home'
-import Posts from './pages/Home'
+import Posts from './pages/Posts'
 import Main from './components/Main'
 import Header from './components/Header'
 
@@ -29,7 +29,7 @@ root.render(
         <Routes>
           <Route path="/" element={<Home />} />
           
-            <Route path="/Posts/:university/:category" element={<Posts />} />
+            <Route path="/Posts" element={<Posts />} />
            
           
           

@@ -27,7 +27,7 @@ import tru from  '../../assets/tru.png'
 	const HomeDescription = styled.div`
     width: 90%;
 	margin:auto;
-	height:650px;
+	height:900px;
     display: flex;
     flex-direction: column;
     margin-top: 150px;
@@ -148,16 +148,24 @@ function Main() {
 	
 	<Logo src= {logo} alt="school"/>
 <NavOptions>
- <LinkOptions t>Admissions </LinkOptions>
+ <LinkOptions >Admissions </LinkOptions>
  </NavOptions>
  
 
  <NavOptions>
- <LinkOptions >General </LinkOptions>
+ <LinkOptions >Courses </LinkOptions>
  </NavOptions>
 
  <NavOptions>
- <LinkOptions to="/Posts"> Forum </LinkOptions>
+ <LinkOptions to="/Posts"> Professors </LinkOptions>
+ </NavOptions>
+
+ <NavOptions>
+ <LinkOptions >Finance </LinkOptions>
+ </NavOptions>
+
+ <NavOptions>
+ <LinkOptions >General </LinkOptions>
  </NavOptions>
  </GroupDiv>
 }
