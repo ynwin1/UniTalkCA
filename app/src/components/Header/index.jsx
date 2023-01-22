@@ -22,14 +22,8 @@ const HomeHeader = styled.header`
 		color:  ${colors.secondary};
 	`
 	const HeaderLogo = styled.img`
-	
-	`
-
-	const UserLogo = styled.img`
-	width:100px;
-	height:50px;
-
-	
+		width: 10%;
+		height: 50px;
 	`
 	const HeaderNav = styled.nav`
 		width: 10%;
@@ -60,7 +54,6 @@ function Header({university, category, image}) {
 	return (
 		<div>
 		<HomeHeader >
-
       <Breadcrumb>
 
         {(university !== undefined && category !== undefined) ? (
@@ -73,15 +66,14 @@ function Header({university, category, image}) {
           <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         )}
       </Breadcrumb>
-      
-			<HeaderLogo src= {image ?? ubc} alt="logo" /><em> {userEmail} </em>
+			<HeaderLogo src= {image ?? ubc} alt="logo" />
 			<HeaderNav>
 			<HeaderLink to ="/Login" > &nbsp;&nbsp;Login &nbsp;&nbsp;</HeaderLink>
 				<HeaderLink to="/SignUp" > &nbsp;&nbsp;SignUp &nbsp;&nbsp;</HeaderLink>
 
 
-			
-				
+
+
 			</HeaderNav>
 		</HomeHeader>
 	</div>

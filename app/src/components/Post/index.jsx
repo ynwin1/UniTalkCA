@@ -32,7 +32,6 @@ function VotingPanel({count}) {
 }
 
 function Post({key, title, user, body, tags, votes, date}) {
-    console.log(key);
     return (
         <div>
           {/*<PostFrame>*/}

@@ -9,8 +9,9 @@ import Header from "../../components/Header";
 import waterloo from  '../../assets/waterloo.png'
 import ubc from  '../../assets/ubc.png'
 import tru from  '../../assets/tru.png'
+import ComposeForm from "../../components/Compose";
 
-const serverURI = "http://localhost:8081";
+export const serverURI = "http://localhost:8081";
 
 // TODO: Repeated with Header. pull it to the shared components
 const Frame = styled.div`
@@ -48,8 +49,10 @@ const nameImgMap = {
 const postSortComperator = (a, b) => new Date(b.date) - new Date(a.date);
 
 function Posts() {
+
     const { university, category } = useParams();
     const [error, setError] = useState("");
+    const [isComposing, setIsComposing] = useState(false);
     const [posts, setPosts] = useState([
         {name: "UBC", category: "admission", title: "1st yeat", description: "This is my first postsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss!", tags: ["CPSC", "MATH"], votes: 5, date: "2022-01-01", email: "John Doe sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"},
         {name: "TRU", category: "courses", title: "CPSC 310", description: "This is my second post!", tags: ["CPSC", "MATH"], votes: 3, date: "2022-01-02", email: "Jane Smith"},
@@ -71,12 +74,12 @@ function Posts() {
 
     const handleOnChange = (e) =>
     {
-    
+
       const value = e.target.value;
       fetchData(e.target.value);
     }
 
-      
+
     useEffect(() => {
       setPosts(null);
       fetch(`${serverURI}/api/name/${university}/category/${category}`, {
@@ -86,7 +89,6 @@ function Posts() {
         console.log(`requesting: ${serverURI}/api/name/${university}/category/${category}`)
         return response.json();
       }).then(function(data) {
-        console.log(data);
         if (!(data && data.length)) {
           setError("No results to display");
         }
@@ -107,13 +109,13 @@ function Posts() {
 
   }).then(function(data) {
     setPosts(data);
-   
-    console.log(data);  
+
+    console.log(data);
   });
 
 }
 
-    
+
 
 
     return (
@@ -125,15 +127,15 @@ function Posts() {
         />
         <Frame>
           <div className="search-box">
-            <InputGroup className="mb-3" style={{width: "50%"}} >
-              <InputGroup.Text   id="inputGroup-sizing-lg">
+            <InputGroup className="mb-3" style={{width: "50%"}}>
+              <InputGroup.Text id="inputGroup-sizing-lg">
                 Search
               </InputGroup.Text>
-              <Form.Control 
+              <Form.Control
                 onChange =  {handleOnChange}
                 aria-label="Default"
                 aria-describedby="inputGroup-sizing-default"
-                
+                // Placeholder="what post are you looking for"
               />
             </InputGroup>
           </div>
@@ -152,9 +154,12 @@ function Posts() {
           )}
         </Frame>
         <ComposeButton onClick={() => {
-
+          setIsComposing(true);
+          console.log("is composing")
         }}> <h1>+</h1> </ComposeButton>
-
+        {isComposing && (
+          <ComposeForm university={university} category={category} submitter={setIsComposing}/>
+        )}
       </div>
     );
 }
