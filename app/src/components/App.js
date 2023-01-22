@@ -1,12 +1,18 @@
-import logo from './logo.svg';
+// CSS
 import './App.css';
-import Home from '../pages/Home'
+// import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+import React from "react";
+import logo from './logo.svg';
+import Home from '../pages/Home';
+import Posts from '../pages/Posts';
 
 function App() {
   return (
     <div>
-      <Home/>
 
+      <Home/>
+      <Posts/>
     </div>
   );
 }

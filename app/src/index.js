@@ -7,6 +7,8 @@ import Header from './components/Header'
 
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Breadcrumb from "react-bootstrap/Breadcrumb";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -14,6 +16,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
+    <Breadcrumb>
+      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+      <Breadcrumb.Item href=""> </Breadcrumb.Item>
+      <Breadcrumb.Item active>Data</Breadcrumb.Item>
+    </Breadcrumb>
     <BrowserRouter>
       
         
@@ -22,7 +29,7 @@ root.render(
         <Routes>
           <Route path="/" element={<Home />} />
           
-            <Route path="/Posts/:univPost" element={<Posts />} />
+            <Route path="/Posts/:university/:category" element={<Posts />} />
            
           
           
