@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom'
+
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import {useState} from 'react'
+import waterloo from  '../../assets/waterloo.png'
+import ubc from  '../../assets/ubc.png'
+import tru from  '../../assets/tru.png'
 
 const HomeHeader = styled.header`
 		width: 95%;
@@ -42,7 +45,7 @@ const HomeHeader = styled.header`
 	const HomeDescription = styled.div`
     width: 90%;
 	margin:auto;
-	height:500px;
+	height:650px;
     display: flex;
     flex-direction: column;
     margin-top: 150px;
@@ -69,23 +72,77 @@ width:350px;
 
 
 `
+
+const GroupDiv= styled.div`
+	height: 1000px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	
+
+	
+`
 const LinkOptions= styled.a`
 color :${colors.secondary};
 display: inline-block;
 width:250px;
 height:100px;
 line-height:100px;
+
 `
+const Logo= styled.img`
+width:150px;
+height:100px;
+margin: auto;
+display: block;
+text-align: center;
+`
+
 
 
 function Header() {
    
 	const [isSelected, setIsSelected] = useState (false);
+	const [logo, setLogo] = useState (ubc);
+
+	function handleOnChange (value)
+{
+       
+     
+        if (value === 'none')
+		{
+			setIsSelected(false);
+		}
+		else{
+
+			if(value === 'UBC')
+			{
+				
+				setLogo(ubc);
+			}
+			else if (value === 'Waterloo')
+			{
+				setLogo(waterloo);
+				
+			}
+			else if (value === 'TRU')
+			{
+				setLogo(tru);
+			}
+			
+
+			setIsSelected(true);
+			
+		}
+
+			
+		
+}
 
 	return (
 		<div>
 		<HomeHeader >
-			<HeaderLogo src="" alt="logo" />
+			<HeaderLogo src= {ubc} alt="logo" />
 			<HeaderNav>
 				<HeaderLink > &nbsp;&nbsp;Login &nbsp;&nbsp;</HeaderLink>
 				<HeaderLink > &nbsp;&nbsp;SignIn &nbsp;&nbsp;</HeaderLink>
@@ -98,7 +155,7 @@ function Header() {
 	
 
 <SelectedDiv>
-<SelectedElement  >
+<SelectedElement  onChange = {(e) =>handleOnChange (e.target.value)}>
     <option value="none">Select a University</option>
 	<option value="UBC">UBC</option>
 	<option  value="SFU">SFU</option>
@@ -109,6 +166,9 @@ function Header() {
  </SelectedElement> 
  
 </SelectedDiv>
+{isSelected && <GroupDiv>
+	
+	<Logo src= {logo} alt="school"/>
 <NavOptions>
  <LinkOptions>Admissions </LinkOptions>
  </NavOptions>
@@ -121,6 +181,8 @@ function Header() {
  <NavOptions>
  <LinkOptions> Forum </LinkOptions>
  </NavOptions>
+ </GroupDiv>
+}
 	</HomeDescription>
 	</div>
 	)
