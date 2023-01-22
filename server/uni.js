@@ -10,7 +10,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const db = require("./postService/models");
-const Uni = db.uni;
 
 db.mongoose
   .connect(`mongodb+srv://ynwin1:3%21OcT2O0%2F@cluster0.q2qmbnh.mongodb.net/?retryWrites=true&w=majority`, {
@@ -33,7 +32,7 @@ app.get("/", (req, res) => {
 require('./postService/routes/uni.route')(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
