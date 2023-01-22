@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const uniPostSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -7,6 +8,8 @@ const uniPostSchema = new mongoose.Schema({
     },
     category: {
         type: String,
+        enum: ['General', "Admission", "Courses", "Finance", "Professor"],
+        default: "General",
         required: [true, "Has to be in one Category"]
     },
     title: {
