@@ -63,19 +63,3 @@ exports.upVote = async (req, res) => {
     res.status(500).json({ message: err });
   }
 };
-
-exports.downVote = async (req, res) => {
-  try {
-    // Assuming title is unique
-    const post = await UniPost.findOneAndUpdate({ title: req.body.title },
-        { $inc: { votes: -1 } },
-        { new: true });
-    if (!post) {
-      res.status(404).json({ message: 'Post not found' });
-    } else {
-      res.status(200).json(post);
-    }
-  } catch (err) {
-    res.status(500).json({ message: err });
-  }
-};
