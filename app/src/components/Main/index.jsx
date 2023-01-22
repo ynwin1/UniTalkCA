@@ -168,7 +168,7 @@ function Main() {
  </NavOptions>
 
  <NavOptions>
- <LinkOptions to={"/posts/" + univ + "/professor"}> Professors </LinkOptions>
+ <LinkOptions to="/Posts"> Professors </LinkOptions>
  </NavOptions>
 
  <NavOptions>
