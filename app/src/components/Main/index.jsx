@@ -28,7 +28,7 @@ import Login from '../Login'
 	const HomeDescription = styled.div`
     width: 90%;
 	margin:auto;
-	height:900px;
+	
     display: flex;
     flex-direction: column;
     margin-top: 150px;

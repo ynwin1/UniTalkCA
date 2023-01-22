@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {firestore, app} from "../../modules/firebase";
 import {addDoc, collection, getDocs, doc, updateDoc} from "@firebase/firestore";
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"
+import Header from "../../components/Header";
 
 const HomeDescription = styled.div`
     width: 70%;
@@ -101,7 +102,8 @@ function SignUp()
 
 		
 
-return(
+return(<div>
+    <Header/>
 <HomeDescription>
     <FormDiv>
         <h3> Create a new account</h3>
@@ -116,7 +118,7 @@ return(
 
 
 </HomeDescription>
-
+</div>
 )
 
 }
