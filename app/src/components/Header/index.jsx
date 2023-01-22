@@ -13,16 +13,14 @@ const HomeHeader = styled.header`
 		width: 95%;
 		margin: auto;
 		margin-top: 25px;
-		height: 75px;
+		height: 150px;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		color:  ${colors.secondary};
 	`
 	const HeaderLogo = styled.img`
-		width: 10%;
-		height: 50px;
-		margin:auto;
+	
 	`
 	const HeaderNav = styled.nav`
 		width: 10%;
@@ -46,18 +44,24 @@ const HomeHeader = styled.header`
 	border-radius:25px;
 	`
 
-function Header({breadcrumbItems}) {
+function Header({university, category, image}) {
 
 	return (
 		<div>
 		<HomeHeader >
       <Breadcrumb>
-        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-        {breadcrumbItems?.map((item) =>
-          <Breadcrumb.Item active>{item}</Breadcrumb.Item>
+
+        {(university !== undefined && category !== undefined) ? (
+          <>
+            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+            <Breadcrumb.Item active>{university}</Breadcrumb.Item>
+            <Breadcrumb.Item active>{category}</Breadcrumb.Item>
+          </>
+        ) : (
+          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         )}
       </Breadcrumb>
-			<HeaderLogo src= {ubc} alt="logo" />
+			<HeaderLogo src= {image ?? ubc} alt="logo" />
 			<HeaderNav>
 				<HeaderLink to ="/Login" > &nbsp;&nbsp;Login &nbsp;&nbsp;</HeaderLink>
 				<HeaderLink to="/SignUp" > &nbsp;&nbsp;SignIn &nbsp;&nbsp;</HeaderLink>

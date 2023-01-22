@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import colors from  '../../utils/style/colors.js'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import Header from "../../components/Header";
 
 const HomeDescription = styled.div`
     width: 70%;
@@ -61,20 +62,23 @@ function Login()
    
 
 return(
-<HomeDescription>
-    <FormDiv>
-        
-        <h3> Log into your account</h3>
-        <FormInput type="text" value = "Enter your User e-mail"/>
-        <FormInput type="password" value = "Enter your Password"/>
-        <SubmitLink> &nbsp;&nbsp;&nbsp; Log In&nbsp;&nbsp;&nbsp;</SubmitLink>
-        Not already an account ?<signupLink to ="/SignUp">SignUp</signupLink> 
-        
-    </FormDiv>
-    
+  <>
+  <Header/>
+    <HomeDescription>
+        <FormDiv>
+
+            <h3> Log into your account</h3>
+            <FormInput type="text" value = "Enter your User e-mail"/>
+            <FormInput type="password" value = "Enter your Password"/>
+            <SubmitLink> &nbsp;&nbsp;&nbsp; Log In&nbsp;&nbsp;&nbsp;</SubmitLink>
+            Not already an account ?<signupLink to ="/SignUp">SignUp</signupLink>
+
+        </FormDiv>
 
 
-</HomeDescription>
+
+    </HomeDescription>
+  </>
 
 )
 

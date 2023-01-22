@@ -81,8 +81,6 @@ display: block;
 text-align: center;
 `
 
-
-
 function Main() {
    
 	const [isSelected, setIsSelected] = useState (false);
@@ -104,7 +102,6 @@ function Main() {
 
 			if(value === 'UBC')
 			{
-				
 				setLogo(ubc);
 				setUniv('ubc');
 			}
@@ -159,24 +156,23 @@ function Main() {
 	
 	<Logo src= {logo} alt="school"/>
 <NavOptions>
- <LinkOptions >Admissions </LinkOptions>
- </NavOptions>
- 
-
- <NavOptions>
- <LinkOptions to={"/posts/" + univ + "/course"}>Courses </LinkOptions>
+ <LinkOptions to={`/Posts/${univ}/admission`}>Admissions </LinkOptions>
  </NavOptions>
 
  <NavOptions>
- <LinkOptions to="/Posts"> Professors </LinkOptions>
+ <LinkOptions to={`/Posts/${univ}/course`}>Courses </LinkOptions>
  </NavOptions>
 
  <NavOptions>
- <LinkOptions to={"/posts/" + univ + "/finance"}>Finance </LinkOptions>
+ <LinkOptions to={`/Posts/${univ}/professor`}> Professors </LinkOptions>
  </NavOptions>
 
  <NavOptions>
- <LinkOptions to={"/posts/" + univ + "/general"}>General </LinkOptions>
+ <LinkOptions to={`/Posts/${univ}/finance`}>Finance </LinkOptions>
+ </NavOptions>
+
+ <NavOptions>
+ <LinkOptions to={`/Posts/${univ}/general`}>General </LinkOptions>
  </NavOptions>
  </GroupDiv>
 }

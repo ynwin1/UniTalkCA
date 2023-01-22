@@ -31,8 +31,8 @@ function VotingPanel({count}) {
   );
 }
 
-function Post({key, title, author, body, votes, date}) {
-
+function Post({key, title, user, body, tags, votes, date}) {
+    console.log(key);
     return (
         <div>
           {/*<PostFrame>*/}
@@ -43,10 +43,19 @@ function Post({key, title, author, body, votes, date}) {
               // text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
               // style={{ width: '18rem' }}
             >
-              <Card.Header>{"User: " + author}</Card.Header>
+              <Card.Header>
+                <div>
+                  {"User: " + user}
+                </div>
+                <div>
+                  {"Date: " + date}
+                </div>
+
+              </Card.Header>
               <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{body}</Card.Text>
+                <Card.Text>{tags}</Card.Text>
                 <br/>
                 <VotingPanel count={votes}/>
               </Card.Body>
