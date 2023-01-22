@@ -69,6 +69,14 @@ function Posts() {
     },...]
    */
 
+    const handleOnChange = (e) =>
+    {
+    
+      const value = e.target.value;
+      fetchData(e.target.value);
+    }
+
+      
     useEffect(() => {
       setPosts(null);
       fetch(`${serverURI}/api/name/${university}/category/${category}`, {
@@ -89,6 +97,25 @@ function Posts() {
       });
     }, []);
 
+
+    async function fetchData (value)
+      {
+
+        await fetch(`${serverURI}/api/name/${university}/category/${category}/${value}`)
+  .then(function(response) {
+    return response.json();
+
+  }).then(function(data) {
+    setPosts(data);
+   
+    console.log(data);  
+  });
+
+}
+
+    
+
+
     return (
       <div>
         <Header
@@ -98,14 +125,15 @@ function Posts() {
         />
         <Frame>
           <div className="search-box">
-            <InputGroup className="mb-3" style={{width: "50%"}}>
-              <InputGroup.Text id="inputGroup-sizing-lg">
+            <InputGroup className="mb-3" style={{width: "50%"}} >
+              <InputGroup.Text   id="inputGroup-sizing-lg">
                 Search
               </InputGroup.Text>
-              <Form.Control
+              <Form.Control 
+                onChange =  {handleOnChange}
                 aria-label="Default"
                 aria-describedby="inputGroup-sizing-default"
-                // Placeholder="what post are you looking for"
+                
               />
             </InputGroup>
           </div>
