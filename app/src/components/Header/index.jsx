@@ -2,12 +2,14 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import colors from '../../utils/style/colors'
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import waterloo from  '../../assets/waterloo.png'
 import ubc from  '../../assets/ubc.png'
 import tru from  '../../assets/tru.png'
+import user from  '../../assets/user.jpg'
 import {Breadcrumb} from "react-bootstrap";
 import Post from "../Post";
+import {UserContext} from '../../utils/Context'
 
 const HomeHeader = styled.header`
 		width: 95%;
@@ -20,6 +22,13 @@ const HomeHeader = styled.header`
 		color:  ${colors.secondary};
 	`
 	const HeaderLogo = styled.img`
+	
+	`
+
+	const UserLogo = styled.img`
+	width:100px;
+	height:50px;
+
 	
 	`
 	const HeaderNav = styled.nav`
@@ -46,9 +55,12 @@ const HomeHeader = styled.header`
 
 function Header({university, category, image}) {
 
+ const {userEmail, setUserEmail} = useContext(UserContext);
+
 	return (
 		<div>
 		<HomeHeader >
+
       <Breadcrumb>
 
         {(university !== undefined && category !== undefined) ? (
@@ -61,11 +73,15 @@ function Header({university, category, image}) {
           <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         )}
       </Breadcrumb>
-			<HeaderLogo src= {image ?? ubc} alt="logo" />
+      
+			<HeaderLogo src= {image ?? ubc} alt="logo" /><em> {userEmail} </em>
 			<HeaderNav>
-				<HeaderLink to ="/Login" > &nbsp;&nbsp;Login &nbsp;&nbsp;</HeaderLink>
-				<HeaderLink to="/SignUp" > &nbsp;&nbsp;SignIn &nbsp;&nbsp;</HeaderLink>
+			<HeaderLink to ="/Login" > &nbsp;&nbsp;Login &nbsp;&nbsp;</HeaderLink>
+				<HeaderLink to="/SignUp" > &nbsp;&nbsp;SignUp &nbsp;&nbsp;</HeaderLink>
 
+
+			
+				
 			</HeaderNav>
 		</HomeHeader>
 	</div>

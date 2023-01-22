@@ -1,5 +1,5 @@
 
-import React, { useState, useRef} from "react";
+import React, { useState, useRef, useContext} from "react";
 import colors from  '../../utils/style/colors.js'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
@@ -7,6 +7,7 @@ import Header from "../../components/Header";
 import {firestore, app} from "../../modules/firebase";
 import {addDoc, collection, getDocs, doc, updateDoc} from "@firebase/firestore";
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"
+import {UserContext} from '../../utils/Context'
 
 const HomeDescription = styled.div`
     width: 70%;
@@ -66,6 +67,8 @@ function Login()
     const auth = getAuth(app);
     const emailRef = useRef();
     const passwordRef = useRef();
+ const {userEmail, setUserEmail} = useContext(UserContext);
+   
    
     
 
@@ -81,12 +84,15 @@ function Login()
 
         try
         {
+            
         	const response =  await signInWithEmailAndPassword(auth, data.email, data.password);
-           
-            const datas = response;
-            console.log(datas);
+          
+            setUserEmail(response.user.email);
 
-        
+            console.log(userEmail);
+         
+
+
         }
         catch(e)
         {
