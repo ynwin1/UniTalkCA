@@ -46,9 +46,10 @@ exports.createPost = (req, res) => {
   })
 };
 
-exports.upVote = async (req, res) => {
+exports.changeVote = async (req, res) => {
   let flag = 1;
-  if (!req.body.vflag) flag = -1
+  if (!(req.body.vflag === 'true')) flag = -1;
+  console.log(flag);
   try {
     // Assuming title is unique
     const post = await UniPost.findOneAndUpdate({ title: req.body.title },
