@@ -1,12 +1,11 @@
 import React, { useState} from "react";
 import colors from  '../../utils/style/colors.js'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
 
 const HomeDescription = styled.div`
-    width: 70%;
+    width: 90%;
 	margin:auto;
-	height:500px;
+	height:900px;
     display: flex;
     flex-direction: column;
     margin-top: 150px;
@@ -24,8 +23,7 @@ text-align:center;
     height:250px;
     margin: auto;
 	display: flex;
-	
-    
+	border: 1px solid ${colors.primary};
 	
 `
 const FormInput= styled.input`
@@ -51,9 +49,6 @@ const SubmitLink = styled.a`
         line-height:30px;
 
 	`
- const signupLink = styled(Link)`
- width:10px;
- `
 
 function Login()
 
@@ -62,13 +57,14 @@ function Login()
 
 return(
 <HomeDescription>
+   
     <FormDiv>
         
         <h3> Log into your account</h3>
         <FormInput type="text" value = "Enter your User e-mail"/>
         <FormInput type="password" value = "Enter your Password"/>
         <SubmitLink> &nbsp;&nbsp;&nbsp; Log In&nbsp;&nbsp;&nbsp;</SubmitLink>
-        Not already an account ?<signupLink to ="/SignUp">SignUp</signupLink> 
+        
         
     </FormDiv>
     
