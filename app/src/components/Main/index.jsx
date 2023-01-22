@@ -6,6 +6,7 @@ import {useState} from 'react'
 import waterloo from  '../../assets/waterloo.png'
 import ubc from  '../../assets/ubc.png'
 import tru from  '../../assets/tru.png'
+import Login from '../Login'
 
 
 	
@@ -87,6 +88,8 @@ function Main() {
 	const [isSelected, setIsSelected] = useState (false);
 	const [univ, setUniv] = useState ('ubc');
 	const [logo, setLogo] = useState (ubc);
+	
+
 
 	function handleOnChange (value)
 {
@@ -97,6 +100,7 @@ function Main() {
 			setIsSelected(false);
 		}
 		else{
+			setIsSelected(true);
 
 			if(value === 'UBC')
 			{
@@ -116,13 +120,14 @@ function Main() {
 			}
 			
 
-			setIsSelected(true);
-			
+		
 		}
-
+		
+	}
+	
 			
 		
-}
+
 
 	return (
 		<div>
@@ -131,7 +136,13 @@ function Main() {
 <HomeDescription>
 	<h1> Canadian Universities </h1>
 	
+	
+	
 
+	
+	
+	
+	
 <SelectedDiv>
 <SelectedElement  onChange = {(e) =>handleOnChange (e.target.value)}>
     <option value="none">Select a University</option>
@@ -148,7 +159,7 @@ function Main() {
 	
 	<Logo src= {logo} alt="school"/>
 <NavOptions>
- <LinkOptions >Admissions </LinkOptions>
+ <LinkOptions t>Admissions </LinkOptions>
  </NavOptions>
  
 
@@ -169,6 +180,7 @@ function Main() {
  </NavOptions>
  </GroupDiv>
 }
+
 	</HomeDescription>
 	</div>
 	)

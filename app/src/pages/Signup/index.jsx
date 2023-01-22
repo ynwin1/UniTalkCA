@@ -2,7 +2,6 @@ import React, { useState} from "react";
 import colors from  '../../utils/style/colors.js'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-
 const HomeDescription = styled.div`
     width: 70%;
 	margin:auto;
@@ -15,19 +14,19 @@ const HomeDescription = styled.div`
 	text-align: center;
 	background-color:${colors.backgroundLight};
   `
-const FormDiv= styled.form`
-text-align:center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-	width: 550px;
-    height:250px;
-    margin: auto;
-	display: flex;
-	
-    
-	
-`
+  const FormDiv= styled.form`
+  text-align:center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 550px;
+      height:250px;
+      margin: auto;
+      display: flex;
+      
+      
+      
+  `
 const FormInput= styled.input`
     
 	width: 250px;
@@ -51,11 +50,10 @@ const SubmitLink = styled.a`
         line-height:30px;
 
 	`
- const signupLink = styled(Link)`
- width:10px;
+    const signupLink = styled(Link)`
  `
 
-function Login()
+function SignUp()
 
 {
    
@@ -63,15 +61,15 @@ function Login()
 return(
 <HomeDescription>
     <FormDiv>
-        
-        <h3> Log into your account</h3>
+        <h3> Create a new account</h3>
+        <FormInput type="text" value = "Enter your User name"/>
+
         <FormInput type="text" value = "Enter your User e-mail"/>
         <FormInput type="password" value = "Enter your Password"/>
-        <SubmitLink> &nbsp;&nbsp;&nbsp; Log In&nbsp;&nbsp;&nbsp;</SubmitLink>
-        Not already an account ?<signupLink to ="/SignUp">SignUp</signupLink> 
+        <SubmitLink> &nbsp;&nbsp;&nbsp; Signup&nbsp;&nbsp;&nbsp;</SubmitLink>
+        already an account ?<signupLink to ="/Login">Login</signupLink> 
         
     </FormDiv>
-    
 
 
 </HomeDescription>
@@ -80,4 +78,4 @@ return(
 
 }
 
-export default Login;
+export default SignUp;

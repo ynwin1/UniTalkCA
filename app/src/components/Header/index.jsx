@@ -1,5 +1,6 @@
 
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 import colors from '../../utils/style/colors'
 import {useState} from 'react'
 import waterloo from  '../../assets/waterloo.png'
@@ -19,6 +20,7 @@ const HomeHeader = styled.header`
 	const HeaderLogo = styled.img`
 		width: 10%;
 		height: 50px;
+		margin:auto;
 	`
 	const HeaderNav = styled.nav`
 		width: 10%;
@@ -34,7 +36,7 @@ const HomeHeader = styled.header`
 		border: 1px solid  ${colors.primary};
 		border-radius:25px;
 	`
-	const HeaderLink = styled.a`
+	const HeaderLink = styled(Link)`
 	background-color: ${colors.primary};
 	color: white;
 	text-decoration: none;
@@ -55,8 +57,8 @@ function Header() {
 		<HomeHeader >
 			<HeaderLogo src= {ubc} alt="logo" />
 			<HeaderNav>
-				<HeaderLink > &nbsp;&nbsp;Login &nbsp;&nbsp;</HeaderLink>
-				<HeaderLink > &nbsp;&nbsp;SignIn &nbsp;&nbsp;</HeaderLink>
+				<HeaderLink to ="/Login" > &nbsp;&nbsp;Login &nbsp;&nbsp;</HeaderLink>
+				<HeaderLink to="/SignUp" > &nbsp;&nbsp;SignIn &nbsp;&nbsp;</HeaderLink>
 				
 			</HeaderNav>
 		</HomeHeader>
