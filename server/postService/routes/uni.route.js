@@ -17,4 +17,7 @@ module.exports = function(app) {
 
   //make a post
   app.post("/api/post", controller.createPost);
+
+  //search for words within the given university's forum
+  app.get("/api/name/:name/category/:category/:search", controller.findPost);
 };

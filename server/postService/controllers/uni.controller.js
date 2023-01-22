@@ -3,7 +3,6 @@ const db = require("../models");
 const UniPost = db.uni;
 
 exports.getPostByNameAndCategory = (req, res) => {
-  console.log(UniPost);
   return UniPost.find({
     name: req.params.name, category: req.params.category
   }).then((result) => {
@@ -11,14 +10,18 @@ exports.getPostByNameAndCategory = (req, res) => {
   }).catch((err) => {
     res.status(404).send("Posts not available!")
   });
-  // UniPost.find({
-  //   "name": req.params.name
-  // }).then((result) => {
-  //   res.status(200).send(result);
-  // }).catch((err) => {
-  //   res.status(404).send("Posts not available!")
-  // });
 };
+
+exports.findPost = (req, res) => {
+  console.log(req.params.search);
+  return UniPost.find({
+    $or: [{title: {$regex : req.params.search}}, {description: {$regex : req.params.search}}]
+  }).then((result) => {
+    res.status(200).send(result);
+  }).catch((err) => {
+    res.status(404).send("No posts available with this word")
+  });
+}
 
 exports.createPost = (req, res) => {
   const post = new UniPost({
