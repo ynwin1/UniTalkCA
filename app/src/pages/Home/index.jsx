@@ -1,5 +1,6 @@
 import React, {useRef, useState} from "react";
 import Header from '../../components/Header'
+import Main from '../../components/Main'
 function Home()
 
 {
@@ -8,7 +9,8 @@ function Home()
 return(
 <div>
     <Header/>
-<h1> Hello </h1>
+
+<Main/>
 
 
 </div>
