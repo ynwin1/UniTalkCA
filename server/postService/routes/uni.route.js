@@ -20,4 +20,6 @@ module.exports = function(app) {
 
   //search for words within the given university's forum
   app.get("/api/name/:name/category/:category/:search", controller.findPost);
+
+  app.put("/api/:id", controller.changeVote);
 };

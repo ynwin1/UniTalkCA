@@ -45,3 +45,14 @@ exports.createPost = (req, res) => {
     res.send({ message: "Post was created successfully!" });
   })
 };
+
+exports.changeVote = async (req, res) => {
+  try {
+    return UniPost.findAndModify({
+      query: {__id: req.params.id},
+      update: { $inc: { vote: 1 } }
+    })
+  } catch (err) {
+    res.status(404).error(err);
+  }
+}

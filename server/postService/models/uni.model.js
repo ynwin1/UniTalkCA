@@ -9,6 +9,7 @@ const uniPostSchema = new mongoose.Schema({
     category: {
         type: String,
         enum: ['General', "Admission", "Courses", "Finance", "Professor"],
+        collation: {locale: 'en', strength: 1},
         default: "General",
         required: [true, "Has to be in one Category"]
     },
@@ -28,6 +29,11 @@ const uniPostSchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, "An email is required"]
+    },
+    votes: {
+        type: Number,
+        default: 0,
+        required: true
     }
 })
 
