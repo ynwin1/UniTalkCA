@@ -4,7 +4,7 @@ const UniPost = db.uni;
 
 exports.getPostByNameAndCategory = (req, res) => {
   return UniPost.find({
-    name: req.params.name, category: req.params.category
+    name: req.params.name, category: req.params.category.toLowerCase()
   }).then((result) => {
     res.status(200).send(result);
   }).catch((err) => {
@@ -26,7 +26,7 @@ exports.findPost = (req, res) => {
 exports.createPost = (req, res) => {
   const post = new UniPost({
     name: req.body.name,
-    category: req.body.category,
+    category: req.body.category.toLowerCase(),
     title: req.body.title,
     description: req.body.description,
     tags: req.body.tags,

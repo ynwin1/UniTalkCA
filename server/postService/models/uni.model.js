@@ -8,9 +8,8 @@ const uniPostSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ['General', "Admission", "Courses", "Finance", "Professor"],
-        collation: {locale: 'en', strength: 1},
-        default: "General",
+        enum: ['general', "admission", "courses", "finance", "professor"],
+        default: "general",
         required: [true, "Has to be in one Category"]
     },
     title: {
