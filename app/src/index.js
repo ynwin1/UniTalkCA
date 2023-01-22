@@ -23,10 +23,9 @@ root.render(
       <Breadcrumb.Item href=""> </Breadcrumb.Item>
       <Breadcrumb.Item active>Data</Breadcrumb.Item>
     </Breadcrumb>
-    
     <BrowserRouter>
       
-    <Header/>
+        
        
       
         <Routes>

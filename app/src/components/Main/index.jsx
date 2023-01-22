@@ -159,24 +159,24 @@ function Main() {
 	
 	<Logo src= {logo} alt="school"/>
 <NavOptions>
- <LinkOptions t>Admissions </LinkOptions>
+ <LinkOptions >Admissions </LinkOptions>
  </NavOptions>
  
 
  <NavOptions>
- <LinkOptions >Courses </LinkOptions>
+ <LinkOptions to={"/posts/" + univ + "/course"}>Courses </LinkOptions>
  </NavOptions>
 
  <NavOptions>
- <LinkOptions to="/Posts"> Professors </LinkOptions>
+ <LinkOptions to={"/posts/" + univ + "/professor"}> Professors </LinkOptions>
  </NavOptions>
 
  <NavOptions>
- <LinkOptions >Finance </LinkOptions>
+ <LinkOptions to={"/posts/" + univ + "/finance"}>Finance </LinkOptions>
  </NavOptions>
 
  <NavOptions>
- <LinkOptions >General </LinkOptions>
+ <LinkOptions to={"/posts/" + univ + "/general"}>General </LinkOptions>
  </NavOptions>
  </GroupDiv>
 }

@@ -2,10 +2,12 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import colors from '../../utils/style/colors'
-import {useState} from 'react'
+import React, {useState} from 'react'
 import waterloo from  '../../assets/waterloo.png'
 import ubc from  '../../assets/ubc.png'
 import tru from  '../../assets/tru.png'
+import {Breadcrumb} from "react-bootstrap";
+import Post from "../Post";
 
 const HomeHeader = styled.header`
 		width: 95%;
@@ -44,26 +46,24 @@ const HomeHeader = styled.header`
 	border-radius:25px;
 	`
 
-	
-
-
-
-function Header() {
-   
-	
+function Header({breadcrumbItems}) {
 
 	return (
 		<div>
 		<HomeHeader >
+      <Breadcrumb>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+        {breadcrumbItems?.map((item) =>
+          <Breadcrumb.Item active>{item}</Breadcrumb.Item>
+        )}
+      </Breadcrumb>
 			<HeaderLogo src= {ubc} alt="logo" />
 			<HeaderNav>
 				<HeaderLink to ="/Login" > &nbsp;&nbsp;Login &nbsp;&nbsp;</HeaderLink>
 				<HeaderLink to="/SignUp" > &nbsp;&nbsp;SignIn &nbsp;&nbsp;</HeaderLink>
-				
+
 			</HeaderNav>
 		</HomeHeader>
-
-
 	</div>
 	)
 }

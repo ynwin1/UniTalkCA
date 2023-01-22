@@ -10,13 +10,13 @@ import './index.css';
 const PostFrame= styled.div`
   margin: auto;
   border: 3px solid ${colors.primary};
-  border-radius: 5px 5px;
+  border-radius: 10px 10px;
   width:80%;
 `
 
 const VotingButton = styled.img`
-  height: 3rem;
-  width: 3rem;
+  height: 40px;
+  width: 40px;
   padding: 10px;
 `;
 
@@ -35,17 +35,24 @@ function Post({key, title, author, body, votes, date}) {
 
     return (
         <div>
-          <PostFrame>
-            <Card>
-              <Card.Header>{author}</Card.Header>
+          {/*<PostFrame>*/}
+            <Card
+              bg={colors.backgroundLight}
+              border="primary"
+              // key={variant}
+              // text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
+              // style={{ width: '18rem' }}
+            >
+              <Card.Header>{"User: " + author}</Card.Header>
               <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{body}</Card.Text>
-                {/*<Button variant="primary">Go somewhere</Button>*/}
+                <br/>
+                <VotingPanel count={votes}/>
               </Card.Body>
             </Card>
-            <VotingPanel count={votes}/>
-          </PostFrame>
+          {/*</PostFrame>*/}
+          <br/>
         </div>
     )
 }

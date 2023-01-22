@@ -1,6 +1,10 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const uniPostSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, "Name cannot be empty."]
+    },
     category: {
         type: String,
         required: [true, "Has to be in one Category"]
