@@ -41,42 +41,45 @@ function ComposeForm({university, category, submitter}) {
   const [textContent, setTextContent] = useState("");
   const [isSubmitClicked, setSubmitClicked] = useState(false);
 
-  useEffect(() => {
-    if (isSubmitClicked) {
-      fetch(`${serverURI}/api/post`, {
-        method: 'POST',
-        headers: {},
-        body: JSON.stringify({
-          name: university,
-          category: category,
-          title: titleContent,
-          description: textContent,
-          tags: ["CPSC", "Good"],
-          date: new Date(),
-          email: "user"
-        })
-      }).then((response) => {
-        console.log(`requesting: ${serverURI}/api/post`);
-        console.log(({
-          name: university,
-          category: category,
-          title: titleContent,
-          description: textContent,
-          tags: ["CPSC", "Good"],
-          date: new Date(),
-          email: "user"
-        }));
-        // return response.json();
-      }).then(function(data) {
-        console.log(data);
-        // if (!(data && data.length)) {
-        //   setError("No results to display");
-        // }
-      }).catch((err) => {
-        console.error(err);
-      });
-    }
-  }, [isSubmitClicked]);
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+
+
+    fetch(`${serverURI}/api/post`, {
+      method: 'POST',
+      headers: {},
+      body: JSON.stringify({
+        name: university,
+        category: category,
+        title: titleContent,
+        description: textContent,
+        tags: ["CPSC", "Good"],
+        date: new Date(),
+        email: "user"
+      })
+    }).then((response) => {
+      console.log(`requesting: ${serverURI}/api/post`);
+      console.log(({
+        name: university,
+        category: category,
+        title: titleContent,
+        description: textContent,
+        tags: ["CPSC", "Good"],
+        date: new Date(),
+        email: "user"
+      }));
+      // return response.json();
+    }).then(function(data) {
+      console.log(data);
+      // if (!(data && data.length)) {
+      //   setError("No results to display");
+      // }
+    }).catch((err) => {
+      console.error(err);
+    });
+  }
+  
+
 
   return (
     <Wrapper onClick={() => {}} onScroll={() => {}}>
@@ -115,10 +118,10 @@ function ComposeForm({university, category, submitter}) {
             </Form.Group>
           </Row>
           <RightSideWrapper>
-            <SubmitButton onClick={() => {
-              setSubmitClicked(true);
+            <SubmitButton onClick={handleSubmit}
+             
               // submitter(false);
-            }}>Submit</SubmitButton>
+            >Submit</SubmitButton>
           </RightSideWrapper>
         </Form>
       </Floating>
