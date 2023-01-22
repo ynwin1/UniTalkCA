@@ -71,18 +71,22 @@ function Posts() {
 
     useEffect(() => {
       setPosts(null);
-      fetch(`${serverURI}/api/name/${university}/category/${category}`)
-        .then((response) => {
-          console.log(response);
-          if (!(response && response.length)) {
-            setError("No results to display");
-            return;
-          }
-          setPosts(response.sort(postSortComperator));
-        })
-        .catch((err) => {
-          setError(err.message);
-        });
+      fetch(`${serverURI}/api/name/${university}/category/${category}`, {
+        method: 'GET',
+        headers: {},
+      }).then((response) => {
+        console.log(`requesting: ${serverURI}/api/name/${university}/category/${category}`)
+        return response.json();
+      }).then(function(data) {
+        console.log(data);
+        if (!(data && data.length)) {
+          setError("No results to display");
+        }
+        setPosts(data.sort(postSortComperator));
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
     }, []);
 
     return (

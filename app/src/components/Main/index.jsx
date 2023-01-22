@@ -89,12 +89,8 @@ function Main() {
 	
 
 
-	function handleOnChange (value)
-{
-       
-     
-        if (value === 'none')
-		{
+	function handleOnChange (value) {
+  if (value === 'none'){
 			setIsSelected(false);
 		}
 		else{
@@ -115,9 +111,6 @@ function Main() {
 				setLogo(tru);
 				setUniv('tru');
 			}
-			
-
-		
 		}
 		
 	}
