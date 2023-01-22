@@ -1,7 +1,11 @@
-import React, { useState} from "react";
+import React, { useState, useEffect, useRef} from "react";
 import colors from  '../../utils/style/colors.js'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import {firestore, app} from "../../modules/firebase";
+import {addDoc, collection, getDocs, doc, updateDoc} from "@firebase/firestore";
+import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"
+
 const HomeDescription = styled.div`
     width: 70%;
 	margin:auto;
@@ -56,17 +60,56 @@ const SubmitLink = styled.a`
 function SignUp()
 
 {
+    const auth = getAuth(app);
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const nameRef = useRef();
+    const ref = collection(firestore, 'userData');
    
+
+
+    const handleSubmit = async (e) =>{
+    	e.preventDefault(); 
+        
+        let data = {
+            name: nameRef.current.value,
+        	email: emailRef.current.value,
+            password: passwordRef.current.value
+        }
+
+        try
+        {
+        	const response =  await createUserWithEmailAndPassword(auth, data.email, data.password);
+           
+            const datas = response.user;
+            console.log(response);
+
+        
+        }
+        catch(e)
+        {
+        	console.log(e);
+        }
+        finally{
+            addDoc(ref, data);
+        }
+
+    };
+
+		
+
+
+		
 
 return(
 <HomeDescription>
     <FormDiv>
         <h3> Create a new account</h3>
-        <FormInput type="text" value = "Enter your User name"/>
+        <FormInput type="text" ref ={nameRef} />
 
-        <FormInput type="text" value = "Enter your User e-mail"/>
-        <FormInput type="password" value = "Enter your Password"/>
-        <SubmitLink> &nbsp;&nbsp;&nbsp; Signup&nbsp;&nbsp;&nbsp;</SubmitLink>
+        <FormInput type="text" ref ={emailRef} />
+        <FormInput type="password" ref ={passwordRef} />
+        <SubmitLink onClick ={handleSubmit}> &nbsp;&nbsp;&nbsp; Signup&nbsp;&nbsp;&nbsp;</SubmitLink>
         already an account ?<signupLink to ="/Login">Login</signupLink> 
         
     </FormDiv>

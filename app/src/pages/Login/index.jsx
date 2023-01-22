@@ -1,8 +1,12 @@
-import React, { useState} from "react";
+
+import React, { useState, useRef} from "react";
 import colors from  '../../utils/style/colors.js'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import Header from "../../components/Header";
+import {firestore, app} from "../../modules/firebase";
+import {addDoc, collection, getDocs, doc, updateDoc} from "@firebase/firestore";
+import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"
 
 const HomeDescription = styled.div`
     width: 70%;
@@ -59,6 +63,38 @@ const SubmitLink = styled.a`
 function Login()
 
 {
+    const auth = getAuth(app);
+    const emailRef = useRef();
+    const passwordRef = useRef();
+   
+    
+
+
+    const handleSubmit = async (e) =>{
+    	e.preventDefault(); 
+        
+        let data = {
+         
+        	email: emailRef.current.value,
+            password: passwordRef.current.value
+        }
+
+        try
+        {
+        	const response =  await signInWithEmailAndPassword(auth, data.email, data.password);
+           
+            const datas = response;
+            console.log(datas);
+
+        
+        }
+        catch(e)
+        {
+        	console.log(e);
+        }
+        
+
+    };
    
 
 return(
@@ -68,9 +104,9 @@ return(
         <FormDiv>
 
             <h3> Log into your account</h3>
-            <FormInput type="text" value = "Enter your User e-mail"/>
-            <FormInput type="password" value = "Enter your Password"/>
-            <SubmitLink> &nbsp;&nbsp;&nbsp; Log In&nbsp;&nbsp;&nbsp;</SubmitLink>
+            <FormInput type="text" ref = {emailRef} />
+            <FormInput type="password"  ref = {passwordRef}/>
+            <SubmitLink onClick = {handleSubmit}> &nbsp;&nbsp;&nbsp; Log In&nbsp;&nbsp;&nbsp;</SubmitLink>
             Not already an account ?<signupLink to ="/SignUp">SignUp</signupLink>
 
         </FormDiv>
